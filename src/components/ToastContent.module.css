@@ -1,0 +1,35 @@
+.content {
+  display: flex;
+  position: relative;
+  z-index: 20;
+  gap: 1rem;
+}
+
+.message {
+  width: 100%;
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  line-height: 1.5em;
+  text-align: left;
+}
+
+.close_button {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  z-index: 20;
+  color: #ffffff;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+  background: transparent;
+}
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: transparent;
+  color: #ffffff;
+}
