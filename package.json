@@ -1,6 +1,6 @@
 {
   "name": "rc-toastr",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A fully customized reactJs toasting library",
   "keywords": [
     "react",

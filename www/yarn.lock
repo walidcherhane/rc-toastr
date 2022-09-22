@@ -1139,10 +1139,10 @@ quick-lru@^5.1.1:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
 
-rc-toastr@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/rc-toastr/-/rc-toastr-1.0.0.tgz#db7f401b82261871d7b83db8205341993682a7c3"
-  integrity sha512-eDsSfh71tbC0CKRR1UAcPGQqwS4+iDM9bT0EAJ8Em72jDd95XwZ4Zm6ACrFYYqKa93Wm/67dB395WkMvwW5udw==
+rc-toastr@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/rc-toastr/-/rc-toastr-1.1.0.tgz#04e45f5a41c496ddebda25a630cb403cdc68b61a"
+  integrity sha512-C2YKGQdiB0c68gW4pr3wDQmI9HXzIFWFPiB88OenvJGD4GjTkysJwP8Y/JlDUAVhkqJmjKbd8Ml1+DiAyyQREg==
 
 react-dom@^18.2.0:
   version "18.2.0"

@@ -1,18 +1,19 @@
 import * as React from 'react'
 import ToastContainer from '../components/ToastContainer'
+import { theme } from '../theme'
 import { Toast, Variant } from '../types'
 type ToastContext = {
   toast: (message: string, variant?: Variant) => void
-  close: (id: string) => void
+  close: (id: number) => void
   clearToasts: () => void
-  config: Config
-  updateConfig: (config: Config) => void
+  config: RequiredConfig
+  updateConfig: (config: RequiredConfig) => void
   toasts: Toast[]
 }
 
 type Config = {
   duration?: number
-  position:
+  position?:
     | 'top'
     | 'bottom'
     | 'top-right'
@@ -26,6 +27,10 @@ type Config = {
   maxToasts?: number
   renderToastIcon?: (type: Toast['type']) => JSX.Element
   toastBackgroundColor?: (type: Toast['type']) => string
+}
+
+type RequiredConfig = {
+  [K in keyof Config]-?: Config[K]
 }
 
 const ToastContext = React.createContext({} as ToastContext)
@@ -42,13 +47,25 @@ export const ToastProvider = ({
   config: _config
 }: {
   children: JSX.Element
-  config: Config
+  config?: Config
 }) => {
+  const DEFAULT_TOAST_CONFIG: RequiredConfig = {
+    position: _config?.position ?? 'top',
+    autoClose: _config?.autoClose ?? true,
+    duration: _config?.duration ?? 5000,
+    maxToasts: _config?.maxToasts ?? 3,
+    pauseOnHover: _config?.pauseOnHover ?? true,
+    showProgressBar: _config?.showProgressBar ?? true,
+    zIndex: _config?.zIndex ?? 30,
+    renderToastIcon: _config?.renderToastIcon ?? ((type) => theme.icons[type]),
+    toastBackgroundColor:
+      _config?.toastBackgroundColor ?? ((type) => theme.colors[type])
+  }
   const [toasts, setToasts] = React.useState<Toast[]>([])
-  const [config, updateConfig] = React.useState(_config)
+  const [config, updateConfig] = React.useState(DEFAULT_TOAST_CONFIG)
 
   React.useEffect(() => {
-    if (toasts.length > (config.maxToasts ?? 3)) {
+    if (toasts.length > config.maxToasts) {
       setToasts(() => toasts.slice(1))
     }
   }, [toasts])
@@ -57,8 +74,7 @@ export const ToastProvider = ({
     setToasts(() => [
       ...toasts,
       {
-        id: Math.floor(Math.random() * 1000).toString(),
-        order: toasts.length > 0 ? toasts[toasts.length - 1].order + 1 : 1,
+        id: toasts.length > 0 ? toasts[toasts.length - 1].id + 1 : 1,
         createdAt: new Date(),
         message: message,
         type: variant ?? 'default'
@@ -66,7 +82,7 @@ export const ToastProvider = ({
     ])
   }
 
-  const close = (id: string) => {
+  const close = (id: number) => {
     setToasts(toasts.filter((toast) => toast.id !== id))
   }
 

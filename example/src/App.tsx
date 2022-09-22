@@ -15,37 +15,37 @@ const App = () => {
       <div className="flex gap-md">
         <label className="flex gap-xs">
           <label className="checkbox">
-            <input type="checkbox" onChange={(e) => {
+            <input checked={config.autoClose} type="checkbox" onChange={(e) => {
               updateConfig({
                 ...config,
                 autoClose: e.target.checked
               })
             }} />
-            <div className="checkmark"></div>
+            <div className="checkmark"/>
           </label>
           <span>Auto Close</span>
         </label>
         <label className="flex gap-xs">
           <label className="checkbox">
-            <input type="checkbox" disabled={!config.autoClose} onChange={(e) => {
+            <input type="checkbox" checked={config.showProgressBar} disabled={!config.autoClose} onChange={(e) => {
               updateConfig({
                 ...config,
                 showProgressBar: e.target.checked
               })
             }} />
-            <div className="checkmark"></div>
+            <div className="checkmark" />
           </label>
           <span>Show Porgress Bar</span>
         </label>
         <label className="flex gap-xs">
           <label className="checkbox">
-            <input type="checkbox" disabled={!config.autoClose} onChange={(e) => {
+            <input type="checkbox" checked={config.pauseOnHover} disabled={!config.autoClose} onChange={(e) => {
               updateConfig({
                 ...config,
                 pauseOnHover: e.target.checked
               })
             }} />
-            <div className="checkmark"></div>
+            <div className="checkmark" />
           </label>
           <span>Pause On Hover</span>
         </label>
@@ -53,49 +53,73 @@ const App = () => {
       <div className="flex gap-md">
         <label className="flex gap-xs">
           <label className="checkbox">
-            <input type="radio" name='postion' onChange={() => {
+            <input type="radio" checked={config.position === "top"}  name='postion' onChange={() => {
+              updateConfig({
+                ...config,
+                position: "top"
+              })
+            }} />
+            <div className="checkmark" />
+          </label>
+          <span>Top</span>
+        </label>
+        <label className="flex gap-xs">
+          <label className="checkbox">
+            <input type="radio" checked={config.position === "top-left"} name='postion' onChange={() => {
               updateConfig({
                 ...config,
                 position: "top-left"
               })
             }} />
-            <div className="checkmark"></div>
+            <div className="checkmark" />
           </label>
           <span>Top Left</span>
         </label>
         <label className="flex gap-xs">
           <label className="checkbox">
-            <input type="radio" name='postion' onChange={() => {
+            <input type="radio" checked={config.position === "top-right"} name='postion' onChange={() => {
               updateConfig({
                 ...config,
                 position: "top-right"
               })
             }} />
-            <div className="checkmark"></div>
+            <div className="checkmark" />
           </label>
           <span>Top Right</span>
         </label>
         <label className="flex gap-xs">
           <label className="checkbox">
-            <input type="radio" name='postion' onChange={() => {
+            <input type="radio" checked={config.position === "bottom"} name='postion' onChange={() => {
+              updateConfig({
+                ...config,
+                position: "bottom"
+              })
+            }} />
+            <div className="checkmark" />
+          </label>
+          <span>Bottom</span>
+        </label>
+        <label className="flex gap-xs">
+          <label className="checkbox">
+            <input type="radio" checked={config.position === "bottom-left"} name='postion' onChange={() => {
               updateConfig({
                 ...config,
                 position: "bottom-left"
               })
             }} />
-            <div className="checkmark"></div>
+            <div className="checkmark" />
           </label>
           <span>Bottom Left</span>
         </label>
         <label className="flex gap-xs">
           <label className="checkbox">
-            <input type="radio" name='postion' onChange={() => {
+            <input type="radio" checked={config.position === "bottom-right"} name='postion' onChange={() => {
               updateConfig({
                 ...config,
                 position: "bottom-right"
               })
             }} />
-            <div className="checkmark"></div>
+            <div className="checkmark" />
           </label>
           <span>Bottom Right</span>
         </label>

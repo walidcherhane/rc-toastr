@@ -1,12 +1,10 @@
 export type Variant = 'success' | 'error' | 'warning' | 'info' | 'default'
 
 export type Toast = {
-  id: string
+  id: number
   title?: string
-  renderIcon?: (type: Variant) => JSX.Element
   message: string
   type: Variant
-  order: number
   createdAt: Date
 }
 

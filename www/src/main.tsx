@@ -6,11 +6,7 @@ import 'rc-toastr/dist/index.css'
 import { ToastProvider } from 'rc-toastr'
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ToastProvider
-      config={{
-        position: 'top-right'
-      }}
-    >
+    <ToastProvider>
       <App />
     </ToastProvider>
   </React.StrictMode>

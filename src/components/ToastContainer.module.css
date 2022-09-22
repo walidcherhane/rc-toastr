@@ -5,4 +5,5 @@
   flex-direction: column;
   padding: 2.5rem;
   max-width: 24rem;
+  pointer-events: none;
 }

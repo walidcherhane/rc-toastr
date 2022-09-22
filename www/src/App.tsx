@@ -18,7 +18,8 @@ const App = () => {
       >
         <a
           href='https://www.github.com/walidcherhane/rc-toastr'
-          target='_blanck'
+          target='_blank'
+          rel='noreferrer'
         >
           <AiFillGithub />
         </a>
@@ -37,6 +38,7 @@ const App = () => {
             <label className='checkbox'>
               <input
                 type='checkbox'
+                checked={config.autoClose}
                 onChange={(e) => {
                   updateConfig({
                     ...config,
@@ -53,6 +55,7 @@ const App = () => {
               <input
                 type='checkbox'
                 disabled={!config.autoClose}
+                checked={config.showProgressBar}
                 onChange={(e) => {
                   updateConfig({
                     ...config,
@@ -69,6 +72,7 @@ const App = () => {
               <input
                 type='checkbox'
                 disabled={!config.autoClose}
+                checked={config.pauseOnHover}
                 onChange={(e) => {
                   updateConfig({
                     ...config,
@@ -87,6 +91,24 @@ const App = () => {
               <input
                 type='radio'
                 name='postion'
+                checked={config.position === 'top'}
+                onChange={() => {
+                  updateConfig({
+                    ...config,
+                    position: 'top'
+                  })
+                }}
+              />
+              <div className='checkmark' />
+            </label>
+            <span>Top</span>
+          </label>
+          <label className='flex flex-wrap gap-1'>
+            <label className='checkbox'>
+              <input
+                type='radio'
+                name='postion'
+                checked={config.position === 'top-left'}
                 onChange={() => {
                   updateConfig({
                     ...config,
@@ -103,6 +125,7 @@ const App = () => {
               <input
                 type='radio'
                 name='postion'
+                checked={config.position === 'top-right'}
                 onChange={() => {
                   updateConfig({
                     ...config,
@@ -119,6 +142,24 @@ const App = () => {
               <input
                 type='radio'
                 name='postion'
+                checked={config.position === 'bottom'}
+                onChange={() => {
+                  updateConfig({
+                    ...config,
+                    position: 'bottom'
+                  })
+                }}
+              />
+              <div className='checkmark' />
+            </label>
+            <span>Bottom</span>
+          </label>
+          <label className='flex flex-wrap gap-1'>
+            <label className='checkbox'>
+              <input
+                type='radio'
+                name='postion'
+                checked={config.position === 'bottom-left'}
                 onChange={() => {
                   updateConfig({
                     ...config,
@@ -135,6 +176,7 @@ const App = () => {
               <input
                 type='radio'
                 name='postion'
+                checked={config.position === 'bottom-right'}
                 onChange={() => {
                   updateConfig({
                     ...config,

@@ -42,11 +42,11 @@ import "rc-toastr/dist/index.css" // import the css file
 
 ReactDOM.render((
     <ToastProvider config={{
-        position: 'bottom-right' // position of the toast [required]
-        autoClose: true // auto close the toast [default: false]
-        duration: 3000 // duration of the toast in ms [default: 3000]
-        showProgressBar: true   // show the progress bar [default: false]
-        pauseOnHover: true // pause the timer when the mouse is over the toast [default: false]
+        position: 'bottom-right' // position of the toast [default: top]
+        autoClose: true // auto close the toast [default: true]
+        duration: 3000 // duration of the toast in ms [default: 5000]
+        showProgressBar: true   // show the progress bar [default: true]
+        pauseOnHover: true // pause the timer when the mouse is over the toast [default: true]
         maxToasts: 3 // max number of toasts [default: 3]
         renderToastIcon: (variant) => {
             if (variant === 'error') {

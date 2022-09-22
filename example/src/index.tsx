@@ -7,9 +7,7 @@ import "rc-toastr/dist/index.css"
 import './index.css'
 
 ReactDOM.render((
-        <ToastProvider config={{
-            position: 'bottom-left',
-        }} >
+        <ToastProvider>
             <App />
         </ToastProvider>
 
