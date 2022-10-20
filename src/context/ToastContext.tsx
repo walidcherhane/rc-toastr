@@ -2,8 +2,17 @@ import * as React from 'react'
 import ToastContainer from '../components/ToastContainer'
 import { theme } from '../theme'
 import { Toast, Variant } from '../types'
+
+type Tvarients = {
+  (message: string, variant?: Variant): void
+  success: (message: string) => void
+  error: (message: string) => void
+  warning: (message: string) => void
+  info: (message: string) => void
+  default: (message: string) => void
+}
 type ToastContext = {
-  toast: (message: string, variant?: Variant) => void
+  toast: Tvarients
   close: (id: number) => void
   clearToasts: () => void
   config: RequiredConfig
@@ -70,7 +79,7 @@ export const ToastProvider = ({
     }
   }, [toasts])
 
-  const toast = (message: string, variant?: Variant) => {
+  const toast: Tvarients = (message: string, variant?: Variant) => {
     setToasts(() => [
       ...toasts,
       {
@@ -81,6 +90,12 @@ export const ToastProvider = ({
       }
     ])
   }
+
+  toast.success = (message: string) => toast(message, 'success')
+  toast.error = (message: string) => toast(message, 'error')
+  toast.warning = (message: string) => toast(message, 'warning')
+  toast.info = (message: string) => toast(message, 'info')
+  toast.default = (message: string) => toast(message, 'default')
 
   const close = (id: number) => {
     setToasts(toasts.filter((toast) => toast.id !== id))

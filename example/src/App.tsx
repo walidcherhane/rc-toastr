@@ -21,7 +21,7 @@ const App = () => {
                 autoClose: e.target.checked
               })
             }} />
-            <div className="checkmark"/>
+            <div className="checkmark" />
           </label>
           <span>Auto Close</span>
         </label>
@@ -53,7 +53,7 @@ const App = () => {
       <div className="flex gap-md">
         <label className="flex gap-xs">
           <label className="checkbox">
-            <input type="radio" checked={config.position === "top"}  name='postion' onChange={() => {
+            <input type="radio" checked={config.position === "top"} name='postion' onChange={() => {
               updateConfig({
                 ...config,
                 position: "top"
@@ -163,18 +163,12 @@ const Button: React.FC<{
 
 }> = ({ variant, children }) => {
   const { toast } = useToast()
-  const messages = [
-    'Click me daddy 🤗!',
-    'Whoo! You did it! 😎',
-    'You did it again! 🎉',
-    'that was easy 🤩',
-  ]
+
+  const handleToast = () => {
+    toast[variant]?.(`Here is your ${variant} toast`)
+  }
   return (
-    <button className="button" onClick={() => toast(
-      messages[
-      Math.floor(Math.random() * messages.length)
-      ]
-      , variant)}>
+    <button className="button" onClick={handleToast}>
       <span style={{
         backgroundColor: theme.colors[variant],
       }} >

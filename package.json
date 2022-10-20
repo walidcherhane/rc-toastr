@@ -1,6 +1,6 @@
 {
   "name": "rc-toastr",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A fully customized reactJs toasting library",
   "keywords": [
     "react",
@@ -29,7 +29,8 @@
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build"
+    "deploy": "gh-pages -d example/build",
+    "dev" : "cd example && yarn install && yarn start"
   },
   "peerDependencies": {
     "react": "^16.0.0"
