@@ -1,8 +1,6 @@
 import * as React from 'react'
 import { motion } from 'framer-motion'
 import { useToast } from '../context/ToastContext'
-import { darken } from '../utils'
-import ToastContent from './ToastContent'
 import type { Toast as T } from '../types'
 import styles from './Toast.module.css'
 
@@ -19,24 +17,22 @@ const Toast = ({
   const [progress, setProgress] = React.useState(100)
   const [isHovered, setIsHovered] = React.useState(false)
   const toastRef = React.useRef<HTMLDivElement>(null)
-  const isLatestToast = toasts[toasts.length - 1].id === toast.id
+  const isLastToast = toasts[toasts.length - 1].id === toast.id
   const allNextToasts = toasts.filter(
     (t) => t.id !== toasts[toasts.length - 1].id
   )
   const allPreviousToasts = allNextToasts.filter((t) => t.id >= toast.id)
   const prevToast = toasts.find((t) => {
     const curr = toasts.indexOf(toast)
-    const prevIndex = curr - 1
-    const prevT = allNextToasts[prevIndex]
-    return t.id === prevT?.id
+    const prev = allNextToasts[curr - 1]
+    return t.id === prev?.id
   })
   const prevToastRef = React.useRef<HTMLDivElement>(null)
-  const hidden = Boolean(!opened && !isLatestToast)
+  const hidden = Boolean(!opened && !isLastToast)
   const mx = allPreviousToasts.length * 20
   const css = {
     toast: {
       container: styles.container,
-      loader: styles.loader,
       inner: styles.inner
     }
   }
@@ -59,7 +55,7 @@ const Toast = ({
 
   React.useEffect(() => {
     if (isHovered) return
-    if (progress >= 0 && config.autoClose) {
+    if (progress >= 0 && config.autoClose && toast.type !== 'loading') {
       const interval = setInterval(() => {
         setProgress((progress) => progress - 1)
       }, config.duration / 100)
@@ -104,40 +100,27 @@ const Toast = ({
           easing: 'easeInOut'
         }}
         style={{
-          backgroundColor: config.toastBackgroundColor(toast.type),
           borderRadius: hidden
             ? config.position.includes('top')
               ? `0 0 20px 20px`
               : `20px 20px 0 0`
             : `0.375rem`,
-          padding: hidden ? `6px` : `1rem 0.75rem 1rem 0.75rem`,
+          overflow: 'hidden',
           marginInline: hidden ? mx : 0
         }}
         className={css.toast.inner}
       >
-        {config.autoClose && config.showProgressBar && (
-          <div
-            style={{
-              width: progress + '%',
-              backgroundColor: darken(
-                config.toastBackgroundColor(toast.type),
-                -20
-              )
-            }}
-            className={css.toast.loader}
-          />
-        )}
-        {isLatestToast ? (
-          <ToastContent
-            toast={toast}
-            onClick={() => toasts.length > 1 && setOpened((c) => !c)}
-          />
-        ) : opened ? (
-          <ToastContent
-            toast={toast}
-            onClick={() => toasts.length > 1 && setOpened((c) => !c)}
-          />
-        ) : null}
+        <div
+          onClick={() => toasts.length > 1 && setOpened((opened) => !opened)}
+        >
+          {config.renderAs({
+            toast,
+            progress,
+            onClose: close,
+            visible: !hidden,
+            showProgressBar: config.showProgressBar && toast.type !== 'loading'
+          })}
+        </div>
       </motion.div>
     </motion.div>
   )

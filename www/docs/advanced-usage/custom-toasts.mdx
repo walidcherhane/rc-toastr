@@ -1,0 +1,112 @@
+---
+title: Custom Toasts
+---
+
+One of the things that we see really useful is `renderAs` feature!
+
+Here is where we give you the full control on your and its up to you how you want to style them! you can literally anything to do so!
+This is how you can use it:
+
+```jsx
+import { ToastProvider, theme } from 'rc-toastr'
+import 'rc-toastr/dist/index.css'
+
+ReactDOM.render(
+  <ToastProvider
+    config={{
+      renderAs: ({ toast, onClose, visible }) => (
+        <div>
+          {visible && (
+            <div>
+              <p> {toast.message} </p>
+              <button onClick={() => onClose(toast.id)}> close </button>
+            </div>
+          )}
+        </div>
+      )
+    }}
+  >
+    <App />
+  </ToastProvider>,
+  document.getElementById('root')
+)
+```
+
+First thing to start with is the parameters `renderAs` has,
+It contains useful things like:
+
+- **toast:** this has all the information about toast: `message`, `id`, `type` and `createAt`.
+- **onClose**: trigger this function passing the toast to close that toast
+- **visible:** weather the toast is visible or hidden,
+- **progress:** the timer in **%** for the toast
+- **showProgressBar:** you can use this as a condition show the progress bar \*\*\*\*
+
+:::info
+As you may have noticed, that we conditionally the toast content only when `visible` is `true`, This an essential part for **rc-toastr** to work as expected since hidden toast or old toast are free of meaning that they don’t contain anything inside them as to have that cool effect of stacking toasts.
+:::
+
+Now that we have the parameters, let’s start styling our toast!
+
+```jsx
+import { ToastProvider, theme } from 'rc-toastr'
+import 'rc-toastr/dist/index.css'
+
+ReactDOM.render(
+  <ToastProvider
+    config={{
+      renderAs: (props) => <CustomToast {...props} />,
+      autoClose: false,
+      zIndex: 1000
+    }}
+  >
+    <App />
+  </ToastProvider>,
+  document.getElementById('root')
+)
+```
+
+Now in your `CustomToast` component you can use the props to style your toast, here is an example:
+
+```jsx
+import { theme } from 'rc-toastr'
+
+export default function CustomToast({ visible, toast, onClose }) {
+  return (
+    <div
+      className={styles.toast}
+      style={{
+        backgroundColor: theme.colors[toast.type]
+      }}
+    >
+      {visible && (
+        <>
+          <div className={styles.toast__icon}>{theme.icons[toast.type]}</div>
+          <div className={styles.toast__content}>
+            <p className={styles.toast__type}>{toast.type}</p>
+            <p className={styles.toast__message}>{toast.message}</p>
+          </div>
+          <div
+            onClick={() => onClose(toast.id)}
+            className={styles.toast__close}
+          >
+            <svg
+              version='1.1'
+              xmlns='http://www.w3.org/2000/svg'
+              viewBox='0 0 15.642 15.642'
+              enableBackground='new 0 0 15.642 15.642'
+            >
+              ...
+            </svg>
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
+```
+
+And here is the result:
+
+import Toast from '../../src/components/custom-toasts'
+
+<Toast />

@@ -2,6 +2,7 @@ import {
   DefaultIcon,
   ErrorIcon,
   InfoIcon,
+  Loading,
   SuccessIcon,
   WarningIcon
 } from '../icons'
@@ -13,13 +14,15 @@ export const theme = {
     info: '#5CB8E4',
     success: '#4BB543',
     warning: '#FFB200',
-    default: '#2c2c54'
+    default: '#2c2c54',
+    loading: '#2c2c54'
   },
   icons: {
     error: <ErrorIcon />,
     info: <InfoIcon />,
     success: <SuccessIcon />,
     warning: <WarningIcon />,
-    default: <DefaultIcon />
+    default: <DefaultIcon />,
+    loading: <Loading />
   }
 }

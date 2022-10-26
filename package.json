@@ -1,6 +1,6 @@
 {
   "name": "rc-toastr",
-  "version": "1.2.0",
+  "version": "1.3.2",
   "description": "A fully customized reactJs toasting library",
   "keywords": [
     "react",
@@ -8,9 +8,10 @@
     "notifications",
     "toastr",
     "push",
-    "alert"
+    "alert",
+    "snackbar"
   ],
-  "author": "walidcherhane",
+  "author": "Walid Cherhane",
   "license": "MIT",
   "repository": "walidcherhane/rc-toastr",
   "main": "dist/index.js",
@@ -30,7 +31,7 @@
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build",
-    "dev" : "cd example && yarn install && yarn start"
+    "dev": "cd example && yarn install && yarn start"
   },
   "peerDependencies": {
     "react": "^16.0.0"

@@ -5,6 +5,17 @@
   gap: 1rem;
 }
 
+.progress_bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+
 .message {
   width: 100%;
   cursor: pointer;
@@ -14,6 +25,7 @@
 
   line-height: 1.5em;
   text-align: left;
+  margin: 0;
 }
 
 .close_button {
@@ -26,6 +38,7 @@
   height: 1.5rem;
   cursor: pointer;
   background: transparent;
+  border: none;
 }
 .icon {
   width: 1.5rem;

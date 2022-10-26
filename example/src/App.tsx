@@ -4,7 +4,7 @@ import { Variant } from 'rc-toastr/dist/types'
 const App = () => {
   const { updateConfig, config } = useToast()
   return <div>
-    <div className="container">
+    <div className="container mx-auto">
       <img src="/logo.png" alt="" width={100} />
       <h1 className="title">
         rc-toastr
@@ -12,8 +12,8 @@ const App = () => {
       <p className="description">
         <span role="img" aria-label='light'>💡</span> Tip:  Click the toast to show the others!
       </p>
-      <div className="flex gap-md">
-        <label className="flex gap-xs">
+      <div className="flex gap-4">
+        <label className="flex gap-2">
           <label className="checkbox">
             <input checked={config.autoClose} type="checkbox" onChange={(e) => {
               updateConfig({
@@ -25,7 +25,7 @@ const App = () => {
           </label>
           <span>Auto Close</span>
         </label>
-        <label className="flex gap-xs">
+        <label className="flex gap-2">
           <label className="checkbox">
             <input type="checkbox" checked={config.showProgressBar} disabled={!config.autoClose} onChange={(e) => {
               updateConfig({
@@ -37,7 +37,7 @@ const App = () => {
           </label>
           <span>Show Porgress Bar</span>
         </label>
-        <label className="flex gap-xs">
+        <label className="flex gap-2">
           <label className="checkbox">
             <input type="checkbox" checked={config.pauseOnHover} disabled={!config.autoClose} onChange={(e) => {
               updateConfig({
@@ -50,8 +50,8 @@ const App = () => {
           <span>Pause On Hover</span>
         </label>
       </div>
-      <div className="flex gap-md">
-        <label className="flex gap-xs">
+      <div className="flex gap-4">
+        <label className="flex gap-2">
           <label className="checkbox">
             <input type="radio" checked={config.position === "top"} name='postion' onChange={() => {
               updateConfig({
@@ -63,7 +63,7 @@ const App = () => {
           </label>
           <span>Top</span>
         </label>
-        <label className="flex gap-xs">
+        <label className="flex gap-2">
           <label className="checkbox">
             <input type="radio" checked={config.position === "top-left"} name='postion' onChange={() => {
               updateConfig({
@@ -75,7 +75,7 @@ const App = () => {
           </label>
           <span>Top Left</span>
         </label>
-        <label className="flex gap-xs">
+        <label className="flex gap-2">
           <label className="checkbox">
             <input type="radio" checked={config.position === "top-right"} name='postion' onChange={() => {
               updateConfig({
@@ -87,7 +87,7 @@ const App = () => {
           </label>
           <span>Top Right</span>
         </label>
-        <label className="flex gap-xs">
+        <label className="flex gap-2">
           <label className="checkbox">
             <input type="radio" checked={config.position === "bottom"} name='postion' onChange={() => {
               updateConfig({
@@ -99,7 +99,7 @@ const App = () => {
           </label>
           <span>Bottom</span>
         </label>
-        <label className="flex gap-xs">
+        <label className="flex gap-2">
           <label className="checkbox">
             <input type="radio" checked={config.position === "bottom-left"} name='postion' onChange={() => {
               updateConfig({
@@ -111,7 +111,7 @@ const App = () => {
           </label>
           <span>Bottom Left</span>
         </label>
-        <label className="flex gap-xs">
+        <label className="flex gap-2">
           <label className="checkbox">
             <input type="radio" checked={config.position === "bottom-right"} name='postion' onChange={() => {
               updateConfig({
@@ -165,7 +165,20 @@ const Button: React.FC<{
   const { toast } = useToast()
 
   const handleToast = () => {
-    toast[variant]?.(`Here is your ${variant} toast`)
+    toast.loading(
+      new Promise((_, reject) => {
+        setTimeout(() => {
+          reject("Done")
+        }, 3000)
+      }),
+      {
+        success: "Success, it's done!",
+        error: (e)=>{
+          toast.error(e as string)
+        },
+        loading: `Loading data...`,
+      }  
+    )
   }
   return (
     <button className="button" onClick={handleToast}>

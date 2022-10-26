@@ -1,0 +1,99 @@
+---
+title: 'Advandced Usage'
+---
+
+Its is true when we said **rc-toastr** is full customizable toasting library! Lets see go deeper on what is possible in this library:
+
+- **Adding configuration**
+  The `ToastProvider` accept a `config` object where you can specify different things depending on your needs!
+
+  For example you may need to adjust the background colors of each toast variant that matches your design system, It’s possible and easy now, Let us see how!
+
+  Inside the `config` object add `toastBackgroundColor` , it’s a function that has the toast variant as a parameter and you can check and add a color on each different variant as you like:
+
+```jsx
+import { ToastProvider, theme } from 'rc-toastr'
+import 'rc-toastr/dist/index.css' // import the css file
+
+ReactDOM.render(
+  <ToastProvider
+    config={{
+      toastBackgroundColor: (variant) => {
+        if (variant === 'error') '#e74c3c' // <- return a custom color
+        return theme.colors[variant] // <- return default colors
+      }
+    }}
+  >
+    <App />
+  </ToastProvider>,
+  document.getElementById('root')
+)
+```
+
+:::tip
+
+There is a case where you might need to change **only one** variant color, we thought about this too that is why we provide you with the default `theme` that you can use **anywhere** you want!
+it has all the default `icons` and `colors` we use so you can default to them in any case
+
+:::
+
+The same thing imply on the toast’s icon, you can edit the icons of any toast variant with the same method:
+
+```jsx
+import { ToastProvider, theme } from 'rc-toastr'
+import 'rc-toastr/dist/index.css'
+
+ReactDOM.render(
+  <ToastProvider
+    config={{
+      renderToastIcon: (variant) => {
+        if (variant === 'error') <div>😫</div>
+        return theme.icons[variant] // <- return default icons
+      }
+    }}
+  >
+    <App />
+  </ToastProvider>,
+  document.getElementById('root')
+)
+```
+
+
+Not only that! we gave you the ability to control more basic things like :
+
+- The position of the toast: `top` - `right` - `left` - `bottom` - `top-right` - `top-left` - `bottom-right` - `bottom-left`
+- The duration in milliseconds
+- Pause toast on hover
+- auto close the toast after the duration ends
+- show progress bar
+- z-index of the toast
+- max toast to show
+
+```jsx
+import { ToastProvider, theme } from 'rc-toastr'
+import 'rc-toastr/dist/index.css'
+
+ReactDOM.render(
+  <ToastProvider
+    config={{
+      position: 'top-right',
+      autoClose: true,
+      duration: 5000,
+      pauseOnHover: true,
+      toastBackgroundColor: (variant) => {
+        if (variant === 'error') '#e74c3c'
+        return theme.colors[variant]
+      },
+      renderToastIcon: (variant) => {
+        if (variant === 'error') <div>😫</div>
+        return theme.icons[variant]
+      },
+      maxToasts: 5,
+      zIndex: 9999
+    }}
+  >
+    <App />
+  </ToastProvider>,
+  document.getElementById('root')
+)
+```

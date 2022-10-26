@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   padding: 0;
@@ -6,37 +10,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(to right, #c9d6ff, #e2e2e2);
+
 }
 
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.flex-column {
-  flex-direction: column;
-}
-.gap-xs {
-  gap: 0.5rem;
-}
-.gap-sm {
-  gap: 1rem;
-}
-.gap-md {
-  gap: 1.5rem;
-}
-.gap-lg {
-  gap: 2rem;
-}
-.gap-xl {
-  gap: 2.5rem;
 }
 
 .container {
@@ -50,7 +31,6 @@ code {
   gap: 1rem;
   flex-wrap: wrap;
   padding: 1rem 0;
-  background: linear-gradient(to right, #c9d6ff, #e2e2e2);
 }
 
 .title {

@@ -1,0 +1,27 @@
+---
+title: Using with Promises
+---
+
+When dealing with data fetching and promises its more convenient to tell the user what is going on!
+With **rc-toastr,** you can use the `toast.loading` method to achieve that!
+
+This method accept the `Promise` as first argument and the second is an object where you specify what to do in each of the states `laoding`, `success`, or `error` . these states can be either a string and we will toast it to the user automatically OR for the `success` and `error` can have also the value of `function` that has either that data received or the occurred as a parameter, here is a practical example
+
+```jsx
+toast.loading(
+    new Promise((resolve) => setTimeout(() => resolve({name: 'John Doe'}), 2000)),
+    {
+        loading: 'loading...',
+        success: (data) => toast.success(`Welcome back ${data.name}!`)
+        error: (err)=> toast.error(err.message)
+    }
+)
+```
+
+import Toaster from '../../src/components/Toaster/with-promise.tsx'
+
+<Toaster />
+
+---
+
+This example uses `success` and `error` as `functions` but you can use simple string that will be toasted to the user,

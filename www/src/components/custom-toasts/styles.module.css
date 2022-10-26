@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i');
+
+
+.toast__svg {
+  fill: #fff;
+}
+
+.toast {
+  text-align: left;
+  background-color: rgb(255, 22, 22);
+  border-radius: 4px;
+  top: 0px;
+  position: relative;
+  box-shadow: 1px 7px 14px -5px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  display: flex;
+  padding: 10px ;
+}
+
+
+.toast__icon {
+  width: 30px;
+  height: 30px;
+}
+
+.toast__type {
+  font-weight: 700;
+  margin-top: 0;
+  text-transform: capitalize;
+}
+
+.toast__message {
+  font-size: 14px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.toast__content {
+  padding-inline: 10px;
+}
+
+.toast__close {
+  position: absolute;
+  right: 22px;
+  top: 10px;
+  width: 14px;
+  cursor: pointer;
+  height: 14px;
+  fill: #fff;
+}

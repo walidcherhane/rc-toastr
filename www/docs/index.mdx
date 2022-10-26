@@ -1,0 +1,66 @@
+---
+  title: Basic Usage
+  sidebar_position: 1
+---
+## **Installation**
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs
+  groupId="pkg"
+  defaultValue="npm"
+  values={[
+    {label: 'Npm', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]
+}>
+<TabItem value="npm">
+
+```shell
+npm install --save rc-toastr
+```
+</TabItem>
+<TabItem value="yarn">
+
+```shell
+yarn add rc-toastr
+```
+</TabItem>
+</Tabs>
+
+## **Usage**
+
+In the index file of your app add `ToastProvider` as the following
+
+```jsx title="src/index.js"
+import { ToastProvider } from 'rc-toastr'
+import "rc-toastr/dist/index.css" // import the css file
+
+ReactDOM.render((
+    <ToastProvider>
+        <App />
+    </ToastProvider>
+), document.getElementById('root'))
+```
+
+Then anywhere in your app use the `useToast` hook to have the access to the `toast` function 
+
+```jsx title="src/App.js"
+import { useToast } from 'rc-toastr'
+
+const App = () => {
+    const { toast } = useToast()
+    const sayHello = () => toast.success("Hello World!")
+    return <button onClick={sayHello}> Say Hello </button>
+  }
+
+export default App
+```
+
+
+
+import Toaster from '../src/components/Toaster';
+
+<Toaster />
+

@@ -1,0 +1,39 @@
+/* From uiverse.io */
+.toast_btn {
+  padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  background-color: rgb(17, 17, 17);
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  margin-inline-end: 20px;
+}
+
+.toast_btn[data-variant='success'] {
+  background-color: #69ffc3;
+}
+.toast_btn[data-variant='error'] {
+  background-color: #c42323;
+}
+.toast_btn[data-variant='info'] {
+  background-color: #3b23c4;
+}
+.toast_btn[data-variant='warning'] {
+  background-color: #ffee00;
+}
+
+.toast_btn:hover {
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.toast_btn:active {
+  transform: translateY(-1px);
+}

@@ -1,37 +1,21 @@
-# ReadMe
+<div align="center">
+  
+ ![https://user-images.githubusercontent.com/56094829/197514874-b521164e-045e-4390-8db7-eaf13fc35150.png](https://user-images.githubusercontent.com/56094829/197514874-b521164e-045e-4390-8db7-eaf13fc35150.png)
 
-![https://user-images.githubusercontent.com/56094829/190699464-8394b80b-6259-4eee-8cb3-5ccf24e9aef8.png](https://user-images.githubusercontent.com/56094829/190699464-8394b80b-6259-4eee-8cb3-5ccf24e9aef8.png)
 
-# Rc-Toastr
-
-> a fully customizable ReactJs toasting library that helps you build complex notification in your app.
-> 
-
-![https://user-images.githubusercontent.com/56094829/190833292-dfaf26be-c88e-482b-9d4e-0919a5810286.gif](https://user-images.githubusercontent.com/56094829/190833292-dfaf26be-c88e-482b-9d4e-0919a5810286.gif)
-
-## Config Options
-
-| Propriety | description | value | default value |
-| --- | --- | --- | --- |
-| autoClose | If the toast should be closed automatically after duration ends | true OR false | true  |
-| showProgressBar | Whether to show the progress bar - autoClose should be true | true OR false | true |
-| pauseOnHover | Whether to pause the closing the toast on hover - autoClose should be true | true OR false | true  |
-| maxToasts | The maximum toasts to show in the screen | number | 30 |
-| duration | The duration in ms before closing the toast | number | 5000 |
-| zIndex | The order of the toasts on the screen | number | 30 |
-| toastBackgroundColor | Function to override the default toast color | (variant) ⇒ string  | (variant) ⇒ theme.colors[type] |
-| renderToastIcon | Function to override the default toast icon | (variant) ⇒ JSX.Element  | (variant) ⇒ theme.icons[type] |
-| postion | The position of the toasts on the screen | top  | bottom | top-right | top-left | bottom-right | bottom-left | top |
-
-## Installation:
-
-```visual-basic
-npm install rc-toastr
-```
-
-```visual-basic
-yarn add rc-toastr
-```
+<img src="https://img.shields.io/npm/dm/rc-toastr" alt="downloads"/>
+<img src="https://img.shields.io/npm/l/rc-toastr" alt="license"/>
+<img src="https://img.shields.io/npm/v/rc-toastr?color=green" alt="version" />
+  
+</div>
+<br />
+<div align="center">
+<a href="https://dub.sh/rc-toastr">Website</a> 
+<span> · </span>
+<a href="https://dub.sh/rc-docs">Documentation</a> 
+<span> · </span>
+<a href="https://dub.sh/walid">Twitter</a>
+</div>
 
 ## Usage
 
@@ -40,13 +24,7 @@ import { ToastProvider } from 'rc-toastr'
 import "rc-toastr/dist/index.css" // import the css file
 
 ReactDOM.render((
-    <ToastProvider 
-		config={{ // <- Optional
-                position: "top-right"
-                duration: 3000
-                // other config here...
-            }}
-		>
+    <ToastProvider>
         <App />
     </ToastProvider>
 ), document.getElementById('root'))
@@ -57,21 +35,13 @@ import { useToast } from 'rc-toastr'
 
 const App = () => {
     const { toast } = useToast()
-    const sayHello = () => {
-        toast("Hello World!")
-        // toast.success("Hello World!")
-    }
-    return <button onClick={sayHello}> Say Hello </button>
+    const hello = () => toast.success("Hello World!")
+    return <button onClick={toast}> Say Hello </button>
   }
 
 export default App
 ```
 
-## Contributions :
+## Documentation:
 
-Contributions are always welcome!
-feel free to open a PR or raise an issue if you face any :D
-
-## Live Example
-
-**[dub.sh/rc-toaster](https://dub.sh/rc-toaster)**
+For more information and examples feel free to check the official website at: **[dub.sh/rc-toastr](https://dub.sh/rc-toastr)**

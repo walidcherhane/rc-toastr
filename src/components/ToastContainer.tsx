@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import { useToast } from '../context/ToastContext'
 import Toast from './Toast'
 import styles from './ToastContainer.module.css'
-import '../styles.css'
 
 function ToastContainer() {
   const { toasts, config } = useToast()
