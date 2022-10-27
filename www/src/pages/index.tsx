@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react'
-import clsx from 'clsx'
 import Link from '@docusaurus/Link'
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import { ToastProvider, useToast, theme } from 'rc-toastr'
-import styles from './index.module.css'
 import splitbee from '@splitbee/web'
 
 function HomepageHeader() {
