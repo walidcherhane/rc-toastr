@@ -4,6 +4,7 @@ import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import { ToastProvider, useToast, theme } from 'rc-toastr'
 import styles from './index.module.css'
+import splitbee from '@splitbee/web'
 
 function HomepageHeader() {
   const { updateConfig, config } = useToast()
@@ -206,11 +207,14 @@ const Button: React.FC<{
   variant: 'error' | 'success' | 'warning' | 'info' | 'default'
 }> = ({ variant }) => {
   const { toast } = useToast()
+  const sendToast = () => {
+    splitbee.track('toast', {
+      variant
+    })
+    toast(`This is a ${variant} toast`, variant)
+  }
   return (
-    <button
-      className='button'
-      onClick={() => toast(`This is a ${variant} toast`, variant)}
-    >
+    <button className='button' onClick={sendToast}>
       <span
         style={{
           backgroundColor: theme.colors[variant]
@@ -223,7 +227,9 @@ const Button: React.FC<{
 }
 
 export default function Home(): JSX.Element {
-  const { siteConfig } = useDocusaurusContext()
+  React.useEffect(() => {
+    splitbee.init()
+  }, [])
   return (
     <ToastProvider
       config={{
