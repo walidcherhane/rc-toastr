@@ -22,7 +22,7 @@ type Tvarients = {
       success: string | ((data: T) => void)
       error: string | ((error: unknown) => void)
     }
-  ) => Promise<T>
+  ) => Promise<T | undefined>
 }
 type ToastContext = {
   toast: Tvarients
@@ -143,7 +143,6 @@ export const ToastProvider = ({
       } else {
         error(err)
       }
-      throw err
     }
   }
 
